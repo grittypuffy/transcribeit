@@ -1,0 +1,38 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    volumes:
+      - ../uploads:/backend/uploads
+    develop:
+      watch:
+        - action: rebuild
+          path: ./backend/
+          target: /backend
+        - action: rebuild
+          path: ./backend/poetry.lock
+    env_file:
+      - ./backend/.env
+    networks:
+      - network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+      args:
+        NEXT_PUBLIC_BACKEND_URL:  http://localhost:8000/api/v1
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - backend
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    networks:
+      - network
+
+networks:
+    network:
+        driver: bridge

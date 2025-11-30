@@ -1,0 +1,27 @@
+[project]
+name = "transcribeit"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Keerthana",email = "grittypuffy@riseup.net"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "fastapi[standard] (>=0.121.2,<0.122.0)",
+    "pydantic-settings (>=2.12.0,<3.0.0)",
+    "uvicorn (>=0.38.0,<0.39.0)",
+    "pyjwt (>=2.10.1,<3.0.0)",
+    "python-dotenv (>=1.2.1,<2.0.0)",
+    "ffmpeg-python (>=0.2.0,<0.3.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "aiofiles (>=25.1.0,<26.0.0)",
+    "bcrypt (>=5.0.0,<6.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "transcribeit", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
