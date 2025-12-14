@@ -1,8 +1,10 @@
 from typing import Optional, List
 from pydantic import BaseModel
 
-class TranscriptionRequest(BaseModel):
+
+class URLTranscriptionRequest(BaseModel):
     url: str
+
 
 class TranscriptionResponse(BaseModel):
     success: bool = False
